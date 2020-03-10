@@ -6,8 +6,7 @@ Created on Tue Mar 10 14:10:15 2020
 """
 
 
-import file_manag as fm
-
+import file_manager as fm
 
 
 # Open Parameter File. This 'FullParam' dictionary has most of the Parameters
@@ -18,11 +17,10 @@ main_param = fm.load_yaml_file(full_param_path)
 
 
 # Get All TDMS file names and entire file path from target directory
+list_of_files = fm.list_files(main_param['list_files'])
 
-list_of_files = fm.list_files(main_param['list_files']['folder_path'],
-                              main_param['list_files']['file_extension'])
-
-list_of_file_paths = [main_param['list_files']['folder_path'] + file for file in list_of_files]
+folder_path = main_param['list_files']['folder_path']
+list_of_file_paths = [folder_path + file for file in list_of_files]
 
 for file_path in list_of_file_paths:
     print(file_path)

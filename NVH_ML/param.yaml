@@ -2,7 +2,7 @@
 #@author: RiguiFD
 #YAML Parameter of NVH ML Project
 #
-list_files:
+lf: #List Files
  folder_path: "C:/Users/riguifd/Desktop/Teste/"
  file_extension: "tdms"
 load_signal_from_tdms:

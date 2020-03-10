@@ -12,10 +12,10 @@ import yaml
 import numpy as np
 
 
-def list_files(folder_path, file_extension):
+def list_files(param):
 
-    files = [fn for fn in os.listdir(folder_path)
-             if fn.endswith(file_extension)]
+    files = [fn for fn in os.listdir(param['folder_path'])
+             if fn.endswith(param['file_extension'])]
     return files
 
 
@@ -49,3 +49,12 @@ def load_yaml_file(path: str):
         except yaml.YAMLError as exc:
             print(exc)
     return result
+
+
+class NVH_sgnl(object):
+    t_n = None
+    N = None
+    dt = None
+    fs = None
+    f_name = None
+    pass
