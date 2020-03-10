@@ -1,0 +1,227 @@
+#Created on Sat Feb 22 17:12:03 2020
+#@author: RiguiFD
+#YAML Parameter of NVH ML Project
+#
+list_files:
+ folder_path: "C:/Users/riguifd/Desktop/Teste/"
+ file_extension: "tdms"
+load_signal_from_tdms:
+ group_name: "ACCEL_RAW_DATA"
+ channel_name: "RIG_ACCEL_1D"
+analysis:
+ - #----------------------------------------------
+  test_name: "BC_CCW"
+  time:
+   start: 1.0
+   end: 4.0
+  fft:
+   cutting_freq:
+    f_min: 500
+    f_max: 8000
+   plot:
+    do: true
+    x_label: "A"
+    y_label: "A"
+    title: "A"
+   smoothing:
+    do: true
+    M: 250
+    p: 0.5
+    sig: 20
+    plot:
+     do: true
+     x_label: "A"
+     y_label: "A"
+     title: "A"
+   peaks:
+    do: true
+    plot:
+     do: true
+     x_label: "A"
+     y_label: "A"
+     title: "A"
+   get_top_n:
+    do: true
+    n: 10
+    print:
+     do: true
+ - #----------------------------------------------
+  test_name: "BC_CW"
+  time:
+   start: 5.0
+   end: 8.0
+  fft:
+   cutting_freq:
+    f_min: 500
+    f_max: 8000
+   plot:
+    do: true
+    x_label: "A"
+    y_label: "A"
+    title: ""
+   smoothing:
+    do: true
+    M: 250
+    p: 0.5
+    sig: 20
+    plot:
+     do: true
+     x_label: "A"
+     y_label: "A"
+     title: "A"
+   peaks:
+    do: true
+    plot:
+     do: true
+     x_label: "A"
+     y_label: "A"
+     title: "A"
+   get_top_n:
+    do: true
+    n: 10
+    print:
+     do: true
+ - #----------------------------------------------
+  test_name: "TVS_CCW"
+  time:
+   start: 10.6
+   end: 13.4
+  fft:
+   cutting_freq:
+    f_min: 500
+    f_max: 8000
+   plot:
+    do: true
+    x_label: "A"
+    y_label: "A"
+    title: ""
+   smoothing:
+    do: true
+    M: 250
+    p: 0.5
+    sig: 20
+    plot:
+     do: true
+     x_label: "A"
+     y_label: "A"
+     title: "A"
+   peaks:
+    do: true
+    plot:
+     do: true
+     x_label: "A"
+     y_label: "A"
+     title: "A"
+   get_top_n:
+    do: true
+    n: 10
+    print:
+     do: true
+ - #----------------------------------------------
+  test_name: "TVS_CW"
+  time:
+   start: 16.2
+   end: 19.0
+  fft:
+   cutting_freq:
+    f_min: 500
+    f_max: 8000
+   plot:
+    do: true
+    x_label: "A"
+    y_label: "A"
+    title: ""
+   smoothing:
+    do: true
+    M: 250
+    p: 0.5
+    sig: 20
+    plot:
+     do: true
+     x_label: "A"
+     y_label: "A"
+     title: "A"
+   peaks:
+    do: true
+    plot:
+     do: true
+     x_label: "A"
+     y_label: "A"
+     title: "A"
+   get_top_n:
+    do: true
+    n: 10
+    print:
+     do: true
+ -
+  test_name: "SR_CCW"
+  time:
+   start: 21.0
+   end: 25.0
+  fft:
+   cutting_freq:
+    f_min: 500
+    f_max: 8000
+   plot:
+    do: true
+    x_label: "A"
+    y_label: "A"
+    title: ""
+   smoothing:
+    do: true
+    M: 250
+    p: 0.5
+    sig: 20
+    plot:
+     do: true
+     x_label: "A"
+     y_label: "A"
+     title: "A"
+   peaks:
+    do: true
+    plot:
+     do: true
+     x_label: "A"
+     y_label: "A"
+     title: "A"
+   get_top_n:
+    do: true
+    n: 10
+    print:
+     do: true
+ - #----------------------------------------------
+  test_name: "SR_CW"
+  time:
+   start: 26.5
+   end: 30.5
+  fft:
+   cutting_freq:
+    f_min: 500
+    f_max: 8000
+   plot:
+    do: true
+    x_label: "A"
+    y_label: "A"
+    title: ""
+   smoothing:
+    do: true
+    M: 250
+    p: 0.5
+    sig: 20
+    plot:
+     do: true
+     x_label: "A"
+     y_label: "A"
+     title: "A"
+   peaks:
+    do: true
+    plot:
+     do: true
+     x_label: "A"
+     y_label: "A"
+     title: "A"
+   get_top_n:
+    do: true
+    n: 10
+    print:
+     do: true
