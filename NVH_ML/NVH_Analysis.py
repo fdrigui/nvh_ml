@@ -9,11 +9,10 @@ Reference: http://ataspinar.com/2018/04/04/machine-learning-with-signal-processi
 
 # Mathematics
 import numpy as np
-from scipy.fftpack import fft, ifft
+from scipy.fftpack import fft
 from scipy import stats, signal
 from scipy.signal import welch, spectrogram, butter, lfilter, find_peaks
 import pandas as pd
-from detect_peaks import detect_peaks
 
 # File Handler
 import nptdms

@@ -17,4 +17,4 @@ __version__ = '0.0.1'
 __author__ = 'Filipi Riguui'
 __license__ = 'MIT'
 
-from NVH_Analysis import *
+from NVH_ML import *

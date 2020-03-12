@@ -2,47 +2,71 @@
 #@author: RiguiFD
 #YAML Parameter of NVH ML Project
 #
-lf: #List Files
+#Created on Sat Feb 22 17:12:03 2020
+#@author: RiguiFD
+#YAML Parameter of NVH ML Project
+#
+list_files: #List Files
  folder_path: "C:/Users/riguifd/Desktop/Teste/"
  file_extension: "tdms"
 load_signal_from_tdms:
  group_name: "ACCEL_RAW_DATA"
  channel_name: "RIG_ACCEL_1D"
+ plot:
+  do: true
+  x_label: "Time [s]"
+  y_label: "Amplitude [m/s**2]"
+  title: "Vibration signal for NVH Test"
 analysis:
  - #----------------------------------------------
   test_name: "BC_CCW"
   time:
    start: 1.0
    end: 4.0
-  fft:
+   plot:
+    do: true
+    x_label: "Time [s]"
+    y_label: "Amplitude [m/s**2]"
+    title: "BC_CCW Vibrabation signal for NVH Test"
+  stat:
+   cutting_freq:
+    f_min: 500
+    f_max: 8000
+  psd:
    cutting_freq:
     f_min: 500
     f_max: 8000
    plot:
     do: true
-    x_label: "A"
-    y_label: "A"
-    title: "A"
+    x_label: "Frequency [Hz]"
+    y_label: "Amplitude (m/s**2)**2/Hz"
+    title: "BC_CCW Power Spectrum Density"
+   welch:
+    blocksize: 4096
+    window: "hann"
+    overlap: 0.3
+    scaling: "density"
+    average: "mean"
    smoothing:
     do: true
-    M: 250
+    M: 20
     p: 0.5
     sig: 20
     plot:
      do: true
-     x_label: "A"
-     y_label: "A"
-     title: "A"
+     x_label: "Frequency [Hz]"
+     y_label: "Amplitude (m/s**2)**2/Hz"
+     title: "Smothed BC_CCW Power Spectrum Density"
    peaks:
     do: true
     plot:
      do: true
-     x_label: "A"
-     y_label: "A"
-     title: "A"
+     x_label: "Frequency [Hz]"
+     y_label: "Amplitude (m/s**2)**2/Hz"
+     title: "Peaks BC_CCW Power Spectrum Density"
    get_top_n:
     do: true
-    n: 10
+    n: 5
     print:
      do: true
  - #----------------------------------------------
@@ -50,35 +74,50 @@ analysis:
   time:
    start: 5.0
    end: 8.0
-  fft:
+   plot:
+    do: true
+    x_label: "Time [s]"
+    y_label: "Amplitude [m/s**2]"
+    title: "BC_CW Vibrabation signal for NVH Test"
+  stat:
+   cutting_freq:
+    f_min: 500
+    f_max: 8000
+  psd:
    cutting_freq:
     f_min: 500
     f_max: 8000
    plot:
     do: true
-    x_label: "A"
-    y_label: "A"
-    title: ""
+    x_label: "Frequency [Hz]"
+    y_label: "Amplitude (m/s**2)**2/Hz"
+    title: "BC_CW Power Spectrum Density"
+   welch:
+    blocksize: 4096
+    window: "hann"
+    overlap: 0.3
+    scaling: "density"
+    average: "mean"
    smoothing:
     do: true
-    M: 250
+    M: 20
     p: 0.5
     sig: 20
     plot:
      do: true
-     x_label: "A"
-     y_label: "A"
-     title: "A"
+     x_label: "Frequency [Hz]"
+     y_label: "Amplitude (m/s**2)**2/Hz"
+     title: "Smothed BC_CW Power Spectrum Density"
    peaks:
     do: true
     plot:
      do: true
-     x_label: "A"
-     y_label: "A"
-     title: "A"
+     x_label: "Frequency [Hz]"
+     y_label: "Amplitude (m/s**2)**2/Hz"
+     title: "Peaks BC_CW Power Spectrum Density"
    get_top_n:
     do: true
-    n: 10
+    n: 5
     print:
      do: true
  - #----------------------------------------------
@@ -86,35 +125,50 @@ analysis:
   time:
    start: 10.6
    end: 13.4
-  fft:
+   plot:
+    do: true
+    x_label: "Time [s]"
+    y_label: "Amplitude [m/s**2]"
+    title: "TVS_CCW Vibrabation signal for NVH Test"
+  stat:
+   cutting_freq:
+    f_min: 500
+    f_max: 8000
+  psd:
    cutting_freq:
     f_min: 500
     f_max: 8000
    plot:
     do: true
-    x_label: "A"
-    y_label: "A"
-    title: ""
+    x_label: "Frequency [Hz]"
+    y_label: "Amplitude (m/s**2)**2/Hz"
+    title: "TVS_CCW Power Spectrum Density"
+   welch:
+    blocksize: 4096
+    window: "hann"
+    overlap: 0.3
+    scaling: "density"
+    average: "mean"
    smoothing:
     do: true
-    M: 250
+    M: 20
     p: 0.5
     sig: 20
     plot:
      do: true
-     x_label: "A"
-     y_label: "A"
-     title: "A"
+     x_label: "Frequency [Hz]"
+     y_label: "Amplitude (m/s**2)**2/Hz"
+     title: "Smothed TVS_CCW Power Spectrum Density"
    peaks:
     do: true
     plot:
      do: true
-     x_label: "A"
-     y_label: "A"
-     title: "A"
+     x_label: "Frequency [Hz]"
+     y_label: "Amplitude (m/s**2)**2/Hz"
+     title: "Peaks TVS_CCW Power Spectrum Density"
    get_top_n:
     do: true
-    n: 10
+    n: 5
     print:
      do: true
  - #----------------------------------------------
@@ -122,71 +176,101 @@ analysis:
   time:
    start: 16.2
    end: 19.0
-  fft:
+   plot:
+    do: true
+    x_label: "Time [s]"
+    y_label: "Amplitude [m/s**2]"
+    title: "TVS_CW Vibrabation signal for NVH Test"
+  stat:
+   cutting_freq:
+    f_min: 500
+    f_max: 8000
+  psd:
    cutting_freq:
     f_min: 500
     f_max: 8000
    plot:
     do: true
-    x_label: "A"
-    y_label: "A"
-    title: ""
+    x_label: "Frequency [Hz]"
+    y_label: "Amplitude (m/s**2)**2/Hz"
+    title: "TVS_CW Power Spectrum Density"
+   welch:
+    blocksize: 4096
+    window: "hann"
+    overlap: 0.3
+    scaling: "density"
+    average: "mean"
    smoothing:
     do: true
-    M: 250
+    M: 20
     p: 0.5
     sig: 20
     plot:
      do: true
-     x_label: "A"
-     y_label: "A"
-     title: "A"
+     x_label: "Frequency [Hz]"
+     y_label: "Amplitude (m/s**2)**2/Hz"
+     title: "Smothed TVS_CW Power Spectrum Density"
    peaks:
     do: true
     plot:
      do: true
-     x_label: "A"
-     y_label: "A"
-     title: "A"
+     x_label: "Frequency [Hz]"
+     y_label: "Amplitude (m/s**2)**2/Hz"
+     title: "Peaks TVS_CW Power Spectrum Density"
    get_top_n:
     do: true
-    n: 10
+    n: 5
     print:
      do: true
- -
+ - #----------------------------------------------
   test_name: "SR_CCW"
   time:
    start: 21.0
    end: 25.0
-  fft:
+   plot:
+    do: true
+    x_label: "Time [s]"
+    y_label: "Amplitude [m/s**2]"
+    title: "SR_CCW Vibrabation signal for NVH Test"
+  stat:
+   cutting_freq:
+    f_min: 500
+    f_max: 8000
+  psd:
    cutting_freq:
     f_min: 500
     f_max: 8000
    plot:
     do: true
-    x_label: "A"
-    y_label: "A"
-    title: ""
+    x_label: "Frequency [Hz]"
+    y_label: "Amplitude (m/s**2)**2/Hz"
+    title: "SR_CCW Power Spectrum Density"
+   welch:
+    blocksize: 4096
+    window: "hann"
+    overlap: 0.3
+    scaling: "density"
+    average: "mean"
    smoothing:
     do: true
-    M: 250
+    M: 20
     p: 0.5
     sig: 20
     plot:
      do: true
-     x_label: "A"
-     y_label: "A"
-     title: "A"
+     x_label: "Frequency [Hz]"
+     y_label: "Amplitude (m/s**2)**2/Hz"
+     title: "Smothed SR_CCW Power Spectrum Density"
    peaks:
     do: true
     plot:
      do: true
-     x_label: "A"
-     y_label: "A"
-     title: "A"
+     x_label: "Frequency [Hz]"
+     y_label: "Amplitude (m/s**2)**2/Hz"
+     title: "Peaks SR_CCW Power Spectrum Density"
    get_top_n:
     do: true
-    n: 10
+    n: 5
     print:
      do: true
  - #----------------------------------------------
@@ -194,34 +278,49 @@ analysis:
   time:
    start: 26.5
    end: 30.5
-  fft:
+   plot:
+    do: true
+    x_label: "Time [s]"
+    y_label: "Amplitude [m/s**2]"
+    title: "SR_CW Vibrabation signal for NVH Test"
+  stat:
+   cutting_freq:
+    f_min: 500
+    f_max: 8000
+  psd:
    cutting_freq:
     f_min: 500
     f_max: 8000
    plot:
     do: true
-    x_label: "A"
-    y_label: "A"
-    title: ""
+    x_label: "Frequency [Hz]"
+    y_label: "Amplitude (m/s**2)**2/Hz"
+    title: "SR_CW Power Spectrum Density"
+   welch:
+    blocksize: 4096
+    window: "hann"
+    overlap: 0.3
+    scaling: "density"
+    average: "mean"
    smoothing:
     do: true
-    M: 250
+    M: 20
     p: 0.5
     sig: 20
     plot:
      do: true
-     x_label: "A"
-     y_label: "A"
-     title: "A"
+     x_label: "Frequency [Hz]"
+     y_label: "Amplitude (m/s**2)**2/Hz"
+     title: "Smothed SR_CW Power Spectrum Density"
    peaks:
     do: true
     plot:
      do: true
-     x_label: "A"
-     y_label: "A"
-     title: "A"
+     x_label: "Frequency [Hz]"
+     y_label: "Amplitude (m/s**2)**2/Hz"
+     title: "Peaks SR_CW Power Spectrum Density"
    get_top_n:
     do: true
-    n: 10
+    n: 5
     print:
      do: true
