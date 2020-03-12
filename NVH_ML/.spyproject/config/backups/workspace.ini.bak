@@ -6,5 +6,5 @@ save_non_project_files = False
 
 [main]
 version = 0.2.0
-recent_files = ['..\\..\\..\\..\\.spyder-py3\\temp.py', '__init__.py', 'file_manager.py', 'NVH_Analysis.py', 'NVH_ML.py', 'param.yaml']
+recent_files = ['..\\..\\..\\..\\.spyder-py3\\temp.py', '__init__.py', 'file_manager.py', 'NVH_ML.py', 'signal_processing.py', 'NVH_Analysis.py', 'param.yaml']
 

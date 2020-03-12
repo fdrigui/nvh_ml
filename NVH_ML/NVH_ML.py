@@ -38,7 +38,8 @@ for file_path in list_of_file_paths:
         slcd_sgnl, slcd_time, slcd_sgnl_par = fm.slicing_by_time(sgnl, time, sgnl_param, test['time'])
         stat = sp.stats_summ(slcd_sgnl, slcd_time, slcd_sgnl_par, test['stat'], test['test_name'])
         result = result.join(stat)
-        x, y, z = sp.get_psd_peaks(slcd_sgnl, slcd_sgnl_par, test['psd'], test['test_name'])
+        psd_peaks = sp.get_psd_peaks(slcd_sgnl, slcd_sgnl_par, test['psd'], ('psd' + test['test_name']))
+        result = result.join(psd_peaks)
 
     full_result = full_result.append(result)
 
@@ -54,5 +55,5 @@ psd_f_val, psd_val, fd = sp.get_psd_values(slcd_sgnl, slcd_sgnl_par, main_param[
 trd_sgnl = sp.smoothing_to_get_peaks(psd_val, psd_f_val, main_param['analysis'][0]['psd']['smoothing'])
 peaks = sp.get_peaks(trd_sgnl, psd_f_val, int(300/fd), int(21/fd),
                      main_param['analysis'][0]['psd']['peaks'])
-get_top_n(trd_sgnl, peaks, fd, main_param['analysis'][0]['psd']['cutting_freq']['f_min'],
-          main_param['analysis'][0]['psd']['get_top_n'], main_param['analysis'][0]['test_name'])
+top_peaks = sp.get_top_n(trd_sgnl, peaks, fd, main_param['analysis'][0]['psd']['cutting_freq']['f_min'],
+                         main_param['analysis'][0]['psd']['get_top_n'], main_param['analysis'][0]['test_name'])

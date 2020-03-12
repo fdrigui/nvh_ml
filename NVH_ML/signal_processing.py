@@ -153,7 +153,7 @@ def get_fft_peaks(sgnl, sgnl_param, param):
 
 
 def get_psd_values(sgnl, sgnl_param, param):
-    print(param)
+
     psd_f_val, psd_val = welch(sgnl, sgnl_param['fs'],
                                window=param['welch']['window'],
                                nperseg=param['welch']['blocksize'],
@@ -176,19 +176,16 @@ def get_psd_values(sgnl, sgnl_param, param):
 
 
 def get_psd_peaks(sgnl, sgnl_param, param, t_name):
-    list_10_val, list_10_x_val = [], []
 
     psd_f_val, psd_val, psd_fd = get_psd_values(sgnl, sgnl_param, param)
     ftrd_sgnl = smoothing_to_get_peaks(psd_val, psd_f_val, param['smoothing'])
     peaks = get_peaks(ftrd_sgnl, psd_f_val, int(300/psd_fd), int(21/psd_fd),
                       param['peaks'])
-    _10_val, _10_x_val = get_top_n(ftrd_sgnl, peaks, psd_fd,
-                                   param['cutting_freq']['f_min'],
-                                   param['get_top_n'], t_name)
-    list_10_val.append(_10_val)
-    list_10_x_val.append(_10_x_val)
+    psd_peaks = get_top_n(ftrd_sgnl, peaks, psd_fd,
+                          param['cutting_freq']['f_min'],
+                          param['get_top_n'], t_name)
 
-    return list_10_val, list_10_x_val
+    return psd_peaks
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # A U T O   C O R R E L A T I O N
@@ -246,27 +243,44 @@ def get_peaks(sgnl, x_sgnl, distance, width, param):
     return peaks
 
 
+# def get_top_n(sgnl, peaks, xd, fmin, param, t_name):
+#     n = param['n']
+#     peaks_val_list = sgnl[peaks]
+#     n_val = np.sort(peaks_val_list)[-n:][::-1]
+#     n_x_val = []
+#     y = pd.DataFrame()
+#     i = 0
+#     for peak in n_val:
+#         n_x_val.append((peaks[peaks_val_list == peak][0]*xd)+fmin)
+#         y = y.join(pd.DataFrame.from_dict({'{}_Amp{}'.format(t_name, i): peak,
+#                                            '{}_x{}'.format(t_name, int(i)): (peaks[peaks_val_list == peak][0]*xd)+fmin}))
+#         i += 1
+#     n_x_val = np.asarray(n_x_val, np.ndarray)
+#     if n_val.size < n:
+#         fill_zeros = np.zeros(n - n_val.size)
+#         n_val = np.append(n_val, fill_zeros)
+#         n_x_val = np.append(n_x_val, fill_zeros)
+#     if param['print']:
+#         values = zip(n_val, n_x_val)
+
+#         for val, x_val in values:
+#             print('Freq:{0:1.2f}Hz;\tAmp:{0:1.2e}'.format(x_val, val))
+#     print(n_val)
+#     return n_val, n_x_val, y
+
 def get_top_n(sgnl, peaks, xd, fmin, param, t_name):
     n = param['n']
     peaks_val_list = sgnl[peaks]
     n_val = np.sort(peaks_val_list)[-n:][::-1]
-    n_x_val = []
-    y = pd.DataFrame()
-    i = 0
-    for peak in n_val:
-        n_x_val.append((peaks[peaks_val_list == peak][0]*xd)+fmin)
-        y = y.join(pd.DataFrame.from_dict({'{}_Amp{}'.format(t_name, i): peak,
-                                           '{}_x{}'.format(t_name, int(i)): (peaks[peaks_val_list == peak][0]*xd)+fmin}))
-        i += 1
-    n_x_val = np.asarray(n_x_val, np.ndarray)
-    if n_val.size < n:
-        fill_zeros = np.zeros(n - n_val.size)
-        n_val = np.append(n_val, fill_zeros)
-        n_x_val = np.append(n_x_val, fill_zeros)
-    if param['print']:
-        values = zip(n_val, n_x_val)
 
-        for val, x_val in values:
-            print('Freq:{0:1.2f}Hz;\tAmp:{0:1.2e}'.format(x_val, val))
-    print(n_val)
-    return n_val, n_x_val, y
+    if n_val.size < n:
+        n_val = np.append(n_val, np.zeros(n - n_val.size))
+    result = {}
+    i = 0
+    for val in n_val:
+        result['{}_Amp_{}'.format(t_name, i)] = [val]
+        result['{}_x_{}'.format(t_name, i)] = [(peaks[peaks_val_list == val][0]*xd)+fmin]
+        i += 1
+
+    result_df = pd.DataFrame.from_dict(result)
+    return result_df
