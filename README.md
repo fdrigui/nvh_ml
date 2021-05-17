@@ -1,2 +1,2 @@
 # nvh_ml
-Noise Viubration and Harshness analysis and classification
+Noise Vibration and Harshness analysis and classification
